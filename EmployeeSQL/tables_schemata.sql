@@ -1,7 +1,8 @@
 -- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
 -- Link to schema: https://app.quickdatabasediagrams.com/#/d/WzT1Zx
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
-
+select * from departments
+--drop tables
 DROP TABLE departments
 DROP TABLE dept_emp
 DROP TABLE dept_manager
@@ -9,34 +10,38 @@ DROP TABLE employees
 DROP TABLE salaries
 DROP TABLE titles
 
+--create departments
 CREATE TABLE departments (
-    dept_no INT NOT NULL PRIMARY KEY,
+    dept_no VARCHAR NOT NULL PRIMARY KEY,
     dept_name VARCHAR NOT NULL
 );
 
 SELECT * FROM departments;
 
+--create dept_emp
 CREATE TABLE dept_emp (
     emp_no INT NOT NULL,
-    dept_no INT NOT NULL,
+    dept_no VARCHAR NOT NULL,
 	PRIMARY KEY (emp_no, dept_no)
-);
+	);
 
 SELECT * FROM dept_emp;
 
+--create dept_manager
 CREATE TABLE dept_manager (
-    dept_no INT NOT NULL,
-    emp_no INT NOT NULL,
-	PRIMARY KEY (dept_no, emp_no)
+    dept_no VARCHAR NOT NULL,
+    emp_no INT NOT NULL
+-- 	PRIMARY KEY (dept_no, emp_no)
+	
 );
 
 SELECT * FROM dept_manager;
 
-
+--
 CREATE TABLE employees (
-    emp_no INT NOT NULL,
-    emp_title_id INT NOT NULL,
-	PRIMARY KEY (emp_no, emp_title_id),
+    emp_no INT NOT NULL PRIMARY KEY,
+    emp_title_id VARCHAR NOT NULL,
+-- 	PRIMARY KEY (emp_no, emp_title_id),
     birth_date VARCHAR NOT NULL,
     first_name VARCHAR NOT NULL,
     last_name VARCHAR NOT NULL,
@@ -50,16 +55,17 @@ SELECT * from employees;
         --emp_no,emp_title_id
      --)
 
-
+--create salaries
 CREATE TABLE salaries (
-    emp_no INT NOT NULL PRIMARY KEY,
+    emp_no INT NOT NULL,
     salary INT NOT NULL
 );
 
 SELECT * from salaries;
 
+--create titles
 CREATE TABLE titles (
-    title_id INT NOT NULL PRIMARY KEY,
+    title_id VARCHAR NOT NULL PRIMARY KEY,
     title VARCHAR NOT NULL
 );
 
