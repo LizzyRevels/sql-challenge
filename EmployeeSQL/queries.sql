@@ -6,9 +6,6 @@ FROM salaries
 INNER JOIN employees ON
 employees.emp_no=salaries.emp_no;
 
-SELECT emp_no, last_name, first_name, sex
-FROM employees
-INNER JOIN salaries ON employees.emp_no = salaries.emp_no;
 
 -- 2. List first name, last name, and hire date for employees who were hired in 1986.
 SELECT first_name, last_name, hire_date
@@ -16,9 +13,12 @@ FROM employees
 WHERE hire_date LIKE '%1986';
 
 -- 3. List the manager of each department with the following information: department number, department name, the manager's employee number, last name, first name.
-SELECT dept_no, dept_name
-FROM departments
-INNER JOIN employees ON emp_no, last_name, first_name
+-- join dept_manager to departments on dept_no and pull dept_no and dept_name
+-- join dept_manager to employees on emp_no	and pull emp_no, last_name, first_name
+SELECT dept_manager.dept_no, dept_manager.emp_no, departments.dept_name, employees.emp_no, employees.last_name, employees.first_name
+FROM dept_manager
+JOIN departments ON dept_manager.dept_no = departments.dept_no
+JOIN employees ON dept_manager.emp_no = employees.emp_no;
 
 -- 4. List the department of each employee with the following information: employee number, last name, first name, and department name.
 
